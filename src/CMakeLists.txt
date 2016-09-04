@@ -13,6 +13,7 @@ set(ECTO_PCL_FILES
   filters/RadiusOutlier.cpp
   filters/VoxelGrid.cpp
   io/CloudViewer.cpp
+  io/OpenNI2Grabber.cpp
 #  io/KinectGrabber.cpp
   io/MergeClouds.cpp
   io/NiConverters.cpp
@@ -44,4 +45,5 @@ set_source_files_properties(io/CloudViewer.cpp
 
 link_ecto(ecto_pcl ${PCL_LIBRARIES}
                    ${catkin_LIBRARIES}
+                   pcl_io
 )

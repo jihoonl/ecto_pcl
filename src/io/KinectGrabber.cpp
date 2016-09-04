@@ -47,14 +47,14 @@
 class SimpleKinectGrabber
 {
 public:
-  SimpleKinectGrabber()  
+  SimpleKinectGrabber()
     : format(0), thread_(boost::ref(*this))
-  { 
+  {
     runmutex_.lock(); // when this gets unlocked in the destructor, the thread unblocks
   }
-  SimpleKinectGrabber(int format_)  
+  SimpleKinectGrabber(int format_)
     : format(format_), thread_(boost::ref(*this))
-  { 
+  {
     runmutex_.lock(); // when this gets unlocked in the destructor, the thread unblocks
   }
 

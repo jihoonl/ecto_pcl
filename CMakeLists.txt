@@ -9,10 +9,10 @@ catkin_package(INCLUDE_DIRS include
 )
 
 # continue with the find_package
-find_package(PCL REQUIRED)
+find_package(PCL 1.8 REQUIRED)
 # Remove vtkproj4 from PCL_LIBRARIES as bug
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=819741
-list(REMOVE_ITEM PCL_LIBRARIES vtkproj4)
+#list(REMOVE_ITEM PCL_LIBRARIES vtkproj4)
 include_directories(SYSTEM
                     ${PCL_INCLUDE_DIRS}
 )
@@ -27,6 +27,8 @@ install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ecto_pcl/
         DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
         COMPONENT main
 )
+
+message("PCL Version : ${PCL_VERSION}")
 
 
 add_subdirectory(src)

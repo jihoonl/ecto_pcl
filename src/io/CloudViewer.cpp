@@ -67,10 +67,13 @@ namespace ecto
       run()
       {
         quit = false;
+        std::cout << "Here" << std::endl;
         viewer_.reset(new PCLVisualizer(window_name));
+        std::cout << "Here2" << std::endl;
         viewer_->setBackgroundColor(0, 0, 255);
         viewer_->addCoordinateSystem(0.25);
         viewer_->initCameraParameters();
+        wait_ = false;
 
         while (!viewer_->wasStopped() && !boost::this_thread::interruption_requested())
         {
@@ -157,14 +160,18 @@ namespace ecto
           runner_thread_->join();
           return ecto::QUIT;
         }
+
+        wait_ = true;
         if (!runner_thread_)
         {
           runner_thread_.reset(new boost::thread(boost::bind(&CloudViewer::run, this)));
         }
-        while (!viewer_)
+
+        while (wait_)
         {
           boost::this_thread::sleep(boost::posix_time::milliseconds(10));
         }
+        /*
 
         {
           boost::mutex::scoped_lock lock(mtx);
@@ -175,8 +182,9 @@ namespace ecto
           *c = signal_.connect(show_dispatch_runner(dispatch, varient));
           jobs_.push_back(c);
         }
+        */
 
-        return 0;
+        return ecto::OK;
       }
 
       ~CloudViewer()
@@ -188,6 +196,7 @@ namespace ecto
         }
       }
       std::string window_name;
+      bool wait_;
       boost::shared_ptr<PCLVisualizer> viewer_;
       boost::shared_ptr<boost::thread> runner_thread_;
       boost::signals2::signal<void

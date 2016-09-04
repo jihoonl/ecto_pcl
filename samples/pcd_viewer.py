@@ -24,4 +24,4 @@ if __name__=="__main__":
     sched = ecto.Scheduler(plasm)
     sched.execute(niter=1)
     #sleep 2 seconds and exit.
-    time.sleep(2)
+    #ecto.view_plasm(plasm)

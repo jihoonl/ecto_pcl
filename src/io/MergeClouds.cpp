@@ -49,9 +49,9 @@ namespace ecto {
       {
         output_ = outputs["output"];
       }
-      
+
       template <typename Point>
-      int process(const tendrils& inputs, const tendrils& outputs, 
+      int process(const tendrils& inputs, const tendrils& outputs,
                   boost::shared_ptr<const ::pcl::PointCloud<Point> >& input1,
                   boost::shared_ptr<const ::pcl::PointCloud<Point> >& input2)
       {
@@ -61,7 +61,7 @@ namespace ecto {
         *output_ = xyz_cloud_variant_t(cloud);
         return 0;
       }
-      
+
       spore<PointCloud> output_;
     };
 
