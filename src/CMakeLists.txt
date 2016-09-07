@@ -13,6 +13,7 @@ set(ECTO_PCL_FILES
   filters/RadiusOutlier.cpp
   filters/VoxelGrid.cpp
   io/CloudViewer.cpp
+  io/CloudViewer2.cpp
   io/OpenNI2Grabber.cpp
 #  io/KinectGrabber.cpp
   io/MergeClouds.cpp
